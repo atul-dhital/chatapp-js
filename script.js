@@ -20,19 +20,18 @@ $(document).ready(function () {
         );
       } else {
         $("#chat-panel").append(
-          '<div class="row no-gutters"><div class="col-md-3"><div class="chat-bubble reply"><span>' + message.text +
+          '<div class="row no-gutters"><div class="col-md-3"><div class="chat-bubble reply"><span>' +
+            message.text +
             "</span></div></div></div>"
         );
       }
     });
-  
 
     $("#chat-panel").append(
       '<div class="row justify-content-center"><div class="col-md-3"><div class="chat-bubble user text-center"><span class="message-new">Leatest</span></div></div></div>'
     );
   }
-  
-  
+
   var startTime =
     localStorage.getItem("startTime") ||
     moment().format("MMMM Do YYYY, h:mm: a");
@@ -53,7 +52,9 @@ $(document).ready(function () {
     $("#chat-panel").append(
       '<div class="row no-gutters"><div class="col-md-3 offset-md-9"><div class="chat-bubble user"><span class=message>' +
         message +
-        '</span><div class="message-time">' + sendTime + '</div></div></div></div>'
+        '</span><div class="message-time">' +
+        sendTime +
+        "</div></div></div></div>"
     );
 
     sendMessage(message, "user");
@@ -63,7 +64,9 @@ $(document).ready(function () {
     $("#chat-panel").append(
       '<div class="row no-gutters"><div class="col-md-3"><div class="chat-bubble reply"><span class="message-alt">' +
         replyMessage +
-        '</span><div class="message-time">' + receiveTime + '</div></div></div></div>'
+        '</span><div class="message-time">' +
+        receiveTime +
+        "</div></div></div></div>"
     );
 
     sendMessage(replyMessage, "reply");
@@ -88,7 +91,9 @@ $(document).ready(function () {
   });
 });
 
-function scrollToBottom() {
-  var chatPanelContainer = document.getElementById("chat-panel-container");
-  chatPanelContainer.scrollTop = chatPanelContainer.scrollHeight;
-}
+// function sendMessage(message, sender) {
+//   $.ajax({
+//     url: "backend.php",
+//     type: "POST",
+//   }
+// }

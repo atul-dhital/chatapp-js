@@ -34,7 +34,9 @@ body {
   height: 100vh;
 }
 
-.container, .main-box, .col-md-8 {
+.container,
+.main-box,
+.col-md-8 {
   width: 100%;
   margin: 0;
   padding: 0;
@@ -236,7 +238,7 @@ hr {
 }
 
 .user {
-  background-color: #000000;
+  background-color: rgba(122, 88, 88, 0.3019607843);
   color: white;
 }
 

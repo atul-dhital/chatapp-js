@@ -6,16 +6,16 @@ body {
     height: 100vh;
     overflow: hidden;
 }
-.bg-primary{
-background-color: blue !important;
-border-radius: 10px;
-display: flex;
-flex-direction: column;
-justify-content: end;
-align-items: flex-end;
+.bg-primary {
+    background-color: blue !important;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: flex-end;
 }
-.bg-primary-alt{
-    background-color: #28a745 !important; 
+.bg-primary-alt {
+    background-color: #28a745 !important;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -31,7 +31,9 @@ align-items: flex-end;
     height: 100vh;
 }
 
-.container, .main-box, .col-md-8 {
+.container,
+.main-box,
+.col-md-8 {
     width: 100%;
     margin: 0;
     padding: 0;
@@ -52,7 +54,6 @@ align-items: flex-end;
 }
 .chat-panel::-webkit-scrollbar {
     height: 100%;
-    
 }
 .settings-tray {
     background: #eee;
@@ -207,11 +208,11 @@ hr {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    .message{
+    .message {
         width: 100%;
         text-align: left;
     }
-    .message-alt{
+    .message-alt {
         text-align: right;
     }
 }
@@ -248,20 +249,19 @@ hr {
 }
 
 .user {
-    background-color: #000000; 
+    background-color: #7a58584d;
     color: white;
-  }
-  
+}
 
-  .reply {
-    background-color: #f0f0f0; 
+.reply {
+    background-color: #f0f0f0;
     color: rgb(0, 0, 0);
-  }
-  .no-gutters{
-padding: 0px 50px;
-  }
+}
+.no-gutters {
+    padding: 0px 50px;
+}
 
-  .message-time{
+.message-time {
     font-size: 12px;
-    margin-right:0% ;
-  }
+    margin-right: 0%;
+}
