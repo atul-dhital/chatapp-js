@@ -1,148 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Message App</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <div class="row main-box">
-            <div class="col-md-8 d-flex justify-content-between flex-column border-30">
-                <div class="settings-tray">
-                    <div class="friend-drawer no-gutters friend-drawer--grey">
-                        <div class="friend-drawer__header d-flex">
-                            <img class="profile-image"
-                                src="https://kathmandu.codes/wp-content/uploads/2024/02/WhatsApp-Image-2024-02-07-at-15.49.32_ecaba5db.jpg"
-                                alt="">
-                            <div class="text">
-                                <h6>Session Started</h6>
-                                <p id="startTimeDisplay"></p>
-                            </div>
-                        </div>
-                        <span class="settings-tray--right">
-                            <i id="restart-session" class="material-icons">cached</i>
-                        </span>
-                    </div>
+      <div class="row main-box">
+        <div
+          class="col-md-8 d-flex justify-content-between flex-column border-30"
+        >
+          <div class="settings-tray">
+            <div class="friend-drawer no-gutters friend-drawer--grey">
+              <div class="friend-drawer__header d-flex">
+                <img
+                  class="profile-image"
+                  src="https://kathmandu.codes/wp-content/uploads/2024/02/WhatsApp-Image-2024-02-07-at-15.49.32_ecaba5db.jpg"
+                  alt=""
+                />
+                <div class="text">
+                  <h6>Session Started</h6>
+                  <p id="startTimeDisplay"></p>
                 </div>
-                <div class="chat-panel" id="chat-panel">
-
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="chat-box-tray">
-                            <input id="message-input" type="text" placeholder="Type your message here...">
-                            <i id="send-button" class="material-icons">send</i>
-                        </div>
-                    </div>
-                </div>
+              </div>
+              <span class="settings-tray--right">
+                <i id="restart-session" class="material-icons">cached</i>
+              </span>
             </div>
+          </div>
+          <div class="chat-panel" id="chat-panel"></div>
+          <div class="row">
+            <div class="col-12">
+              <div class="chat-box-tray">
+                <input
+                  id="message-input"
+                  type="text"
+                  placeholder="Type your message here..."
+                />
+                <i id="send-button" class="material-icons">send</i>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        $(document).ready(function () {
-  function sendMessage(message, sender) {
-    var messages = JSON.parse(localStorage.getItem("messages")) || [];
-    messages.push({
-      text: message,
-      timestamp: moment().format("MMMM Do YYYY, h:mm:ss a"),
-      sender: sender,
-    });
-    localStorage.setItem("messages", JSON.stringify(messages));
-  }
+      $(document).ready(function () {
+        function sendMessage(message, sender) {
+          var messages = JSON.parse(localStorage.getItem("messages")) || [];
+          messages.push({
+            text: message,
+            timestamp: moment().format("MMMM Do YYYY, h:mm:ss a"),
+            sender: sender,
+          });
+          localStorage.setItem("messages", JSON.stringify(messages));
+        }
 
-  function displayMessages() {
-    var messages = JSON.parse(localStorage.getItem("messages")) || [];
-    messages.forEach(function (message) {
-      if (message.sender === "user") {
-        $("#chat-panel").append(
-          '<div class="row no-gutters"><div class="col-md-3 offset-md-9 "><div class="chat-bubble user"></span>' +
-            message.text +
-            "<span></div></div></div>"
-        );
-      } else {
-        $("#chat-panel").append(
-          '<div class="row no-gutters"><div class="col-md-3"><div class="chat-bubble reply"><span>' +
-            message.text +
-            "</span></div></div></div>"
-        );
-      }
-    });
+        function displayMessages() {
+          var messages = JSON.parse(localStorage.getItem("messages")) || [];
+          messages.forEach(function (message) {
+            if (message.sender === "user") {
+              $("#chat-panel").append(
+                '<div class="row no-gutters"><div class="col-md-3 offset-md-9 "><div class="chat-bubble user"></span>' +
+                  message.text +
+                  "<span></div></div></div>"
+              );
+            } else {
+              $("#chat-panel").append(
+                '<div class="row no-gutters"><div class="col-md-3"><div class="chat-bubble reply"><span>' +
+                  message.text +
+                  "</span></div></div></div>"
+              );
+            }
+          });
 
-    $("#chat-panel").append(
-      '<div class="row justify-content-center"><div class="col-md-3"><div class="chat-bubble user text-center"><span class="message-new">Leatest</span></div></div></div>'
-    );
-  }
+          $("#chat-panel").append(
+            '<div class="row justify-content-center"><div class="col-md-3"><div class="chat-bubble user text-center"><span class="message-new">Leatest</span></div></div></div>'
+          );
+        }
 
-  var startTime =
-    localStorage.getItem("startTime") ||
-    moment().format("MMMM Do YYYY, h:mm: a");
-  $("#startTimeDisplay").text("started at: " + startTime);
+        var startTime =
+          localStorage.getItem("startTime") ||
+          moment().format("MMMM Do YYYY, h:mm: a");
+        $("#startTimeDisplay").text("started at: " + startTime);
 
-  $("#restart-session").click(function () {
-    localStorage.removeItem("startTime");
-    localStorage.removeItem("messages");
-    location.reload();
-  });
+        $("#restart-session").click(function () {
+          localStorage.removeItem("startTime");
+          localStorage.removeItem("messages");
+          location.reload();
+        });
 
-  displayMessages();
+        displayMessages();
 
-  function handleUserMessage(message) {
-    var sendTime = moment().format("h:mm a");
-    var receiveTime = moment().format("h:mm a");
+        function handleUserMessage(message) {
+          var sendTime = moment().format("h:mm a");
+          var receiveTime = moment().format("h:mm a");
 
-    $("#chat-panel").append(
-      '<div class="row no-gutters"><div class="col-md-3 offset-md-9"><div class="chat-bubble user"><span class=message>' +
-        message +
-        '</span><div class="message-time">' +
-        sendTime +
-        "</div></div></div></div>"
-    );
+          $("#chat-panel").append(
+            '<div class="row no-gutters"><div class="col-md-3 offset-md-9"><div class="chat-bubble user"><span class=message>' +
+              message +
+              '</span><div class="message-time">' +
+              sendTime +
+              "</div></div></div></div>"
+          );
 
-    sendMessage(message, "user");
+          sendMessage(message, "user");
 
-    var replyMessage = " " + message;
+          var replyMessage = " " + message;
 
-    $("#chat-panel").append(
-      '<div class="row no-gutters"><div class="col-md-3"><div class="chat-bubble reply"><span class="message-alt">' +
-        replyMessage +
-        '</span><div class="message-time">' +
-        receiveTime +
-        "</div></div></div></div>"
-    );
+          $("#chat-panel").append(
+            '<div class="row no-gutters"><div class="col-md-3"><div class="chat-bubble reply"><span class="message-alt">' +
+              replyMessage +
+              '</span><div class="message-time">' +
+              receiveTime +
+              "</div></div></div></div>"
+          );
 
-    sendMessage(replyMessage, "reply");
-  }
+          sendMessage(replyMessage, "reply");
+        }
 
-  $("#send-button").click(function () {
-    var message = $("#message-input").val().trim();
-    if (message !== "") {
-      handleUserMessage(message);
-      $("#message-input").val("");
-    }
-  });
+        $("#send-button").click(function () {
+          var message = $("#message-input").val().trim();
+          if (message !== "") {
+            handleUserMessage(message);
+            $("#message-input").val("");
+          }
+        });
 
-  $("#message-input").keypress(function (e) {
-    if (e.which === 13) {
-      var message = $("#message-input").val().trim();
-      if (message !== "") {
-        handleUserMessage(message);
-        $("#message-input").val("");
-      }
-    }
-  });
-});
+        $("#message-input").keypress(function (e) {
+          if (e.which === 13) {
+            var message = $("#message-input").val().trim();
+            if (message !== "") {
+              handleUserMessage(message);
+              $("#message-input").val("");
+            }
+          }
+        });
+      });
     </script>
-    
-</body>
-
+  </body>
 </html>
